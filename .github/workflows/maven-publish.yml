@@ -46,10 +46,8 @@ jobs:
       with:
           name: jar-artifact
           path: target/
-          #path: target/
     - name: Docker build
-      run: |
-        docker build . -t dsener/ghactions:latest
+      run: docker build . -t dsener/ghactions:latest
 
     - name: Login to DockerHub
       uses: docker/login-action@v1
@@ -58,14 +56,4 @@ jobs:
         password: ${{ secrets.DOCKERHUB_TOKEN }}
 
     - name: Docker push
-      run: |
-        docker push dsener/ghactions:latest
-  run:
-    runs-on: ubuntu-latest
-    needs: [build, deploy]
-    
-    steps:
-    - name: Run container
-      run: |
-        docker run dsener/ghactions:latest
-  
+      run: docker push dsener/ghactions:latest
