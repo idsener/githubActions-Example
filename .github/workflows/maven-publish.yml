@@ -48,7 +48,7 @@ jobs:
           path: target/
     - name: Docker build
       run: |
-        docker build . -t dsener/ghActions:latest
+        docker build . -t dsener/ghactions:latest
 
     - name: Login to DockerHub
       uses: docker/login-action@v1
@@ -58,7 +58,7 @@ jobs:
 
     - name: Docker push
       run: |
-        docker push dsener/ghActions:latest
+        docker push dsener/ghactions:latest
   run:
     runs-on: ubuntu-latest
     needs: [build, deploy]
@@ -66,5 +66,5 @@ jobs:
     steps:
     - name: Run container
       run: |
-        docker run dsener/ghActions:latest
+        docker run dsener/ghactions:latest
   
